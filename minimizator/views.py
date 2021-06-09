@@ -23,10 +23,11 @@ class MinimiserView(View):
             context = {'formset': MinimizerForm(self.request.POST),
                        'alert': 'The URL has to start with "http://" or "https://".'}
             return render(request, 'main_page.html', context)
-
-        if requestss.get(link).status_code != 200:
+        try:
+            requestss.get(link)
+        except:
             context = {'formset': MinimizerForm(self.request.POST),
-                       'alert': 'Url is not available'}
+                       'alert': f'{link}    is not available'}
             return render(request, 'main_page.html', context)
 
         url_obj, created = Link.objects.get_or_create(main_link=link)
