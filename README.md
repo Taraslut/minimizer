@@ -1,6 +1,6 @@
 # Minimizer project 
 
-##To starts project  
+## To starts project  
 - manage.py makemigrations
 - manage.py migrate 
 
