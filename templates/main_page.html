@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{% if alert %}
+    <h2> {{ alert }}</h2>
+{% endif %}
+
+{% if formset %}
+    <form method="post">
+        {% csrf_token %}
+        {{ formset.as_p }}
+        <input type="submit">
+    </form>
+{% endif %}
+
+{% if url_obj %}
+    <h1>
+        The minimized link for {{ url_obj.main_link }} is
+        <a href={{ url_obj.min_url_link }}> {{ request.headers.host }}/{{ url_obj.min_url_link }}</a>
+        have {{ url_obj.redirects }} redirects.
+    </h1>
+{% endif %}
+
+</body>
+</html>
